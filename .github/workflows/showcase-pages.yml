@@ -24,19 +24,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - name: Build the showcase (stdlib only)
         run: python3 showcase/build.py
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
         # Auto-provision Pages if it's ever disabled (e.g. repo reset) so the
         # first run doesn't fail on "Get Pages site failed".
         with:
           enablement: true
       - name: Upload showcase/ as the Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: showcase
 
@@ -48,4 +48,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
